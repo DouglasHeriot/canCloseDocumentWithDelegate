@@ -43,6 +43,21 @@ class Document: NSDocument {
 		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
 	}
 
-
+	override func canCloseDocumentWithDelegate(delegate: AnyObject, shouldCloseSelector: Selector, contextInfo: UnsafeMutablePointer<Void>) {
+		
+		let alert = NSAlert()
+		alert.messageText = "Are you sure you want to close this document?"
+		alert.addButtonWithTitle("Close")
+		alert.addButtonWithTitle("Cancel")
+		
+		alert.beginSheetModalForWindow(windowForSheet!) { (returnCode: NSModalResponse) -> Void in
+			
+			// - (void)document:(NSDocument *)doc shouldClose:(BOOL)shouldClose  contextInfo:(void  *)contextInfo
+			
+			let shouldClose = returnCode == NSAlertFirstButtonReturn
+			
+			self.respondToCanClose(shouldClose, delegate: delegate, selector: shouldCloseSelector, contextInfo: contextInfo)
+		}
+	}
 }
 
