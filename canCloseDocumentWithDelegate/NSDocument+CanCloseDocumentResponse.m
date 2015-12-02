@@ -12,6 +12,8 @@
 
 - (void)respondToCanClose:(BOOL)shouldClose delegate:(id)delegate selector:(SEL)shouldCloseSelector contextInfo:(void *)contextInfo
 {
+	// - (void)document:(NSDocument *)doc shouldClose:(BOOL)shouldClose  contextInfo:(void  *)contextInfo
+	
 	NSDocument *doc = self;
 	
 	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[delegate methodSignatureForSelector:shouldCloseSelector]];
