@@ -12,7 +12,6 @@
 		A5E738B01C0E597500D747C4 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E738AE1C0E597500D747C4 /* Document.xib */; };
 		A5E738B21C0E597500D747C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E738B11C0E597500D747C4 /* Assets.xcassets */; };
 		A5E738B51C0E597500D747C4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E738B31C0E597500D747C4 /* MainMenu.xib */; };
-		A5E738BF1C0E5A5900D747C4 /* NSDocument+CanCloseDocumentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E738BE1C0E5A5900D747C4 /* NSDocument+CanCloseDocumentResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +23,6 @@
 		A5E738B41C0E597500D747C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A5E738B61C0E597500D747C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5E738BC1C0E5A5900D747C4 /* canCloseDocumentWithDelegate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "canCloseDocumentWithDelegate-Bridging-Header.h"; sourceTree = "<group>"; };
-		A5E738BD1C0E5A5900D747C4 /* NSDocument+CanCloseDocumentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDocument+CanCloseDocumentResponse.h"; sourceTree = "<group>"; };
-		A5E738BE1C0E5A5900D747C4 /* NSDocument+CanCloseDocumentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDocument+CanCloseDocumentResponse.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +61,6 @@
 				A5E738B11C0E597500D747C4 /* Assets.xcassets */,
 				A5E738B31C0E597500D747C4 /* MainMenu.xib */,
 				A5E738B61C0E597500D747C4 /* Info.plist */,
-				A5E738BD1C0E5A5900D747C4 /* NSDocument+CanCloseDocumentResponse.h */,
-				A5E738BE1C0E5A5900D747C4 /* NSDocument+CanCloseDocumentResponse.m */,
 				A5E738BC1C0E5A5900D747C4 /* canCloseDocumentWithDelegate-Bridging-Header.h */,
 			);
 			path = canCloseDocumentWithDelegate;
@@ -144,7 +139,6 @@
 			files = (
 				A5E738AD1C0E597500D747C4 /* Document.swift in Sources */,
 				A5E738AB1C0E597500D747C4 /* AppDelegate.swift in Sources */,
-				A5E738BF1C0E5A5900D747C4 /* NSDocument+CanCloseDocumentResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +292,7 @@
 				A5E738BB1C0E597500D747C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

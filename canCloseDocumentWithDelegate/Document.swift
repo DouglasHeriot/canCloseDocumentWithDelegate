@@ -52,11 +52,18 @@ class Document: NSDocument {
 		
 		alert.beginSheetModalForWindow(windowForSheet!) { (returnCode: NSModalResponse) -> Void in
 			
-			// - (void)document:(NSDocument *)doc shouldClose:(BOOL)shouldClose  contextInfo:(void  *)contextInfo
-			
 			let shouldClose = returnCode == NSAlertFirstButtonReturn
 			
-			self.respondToCanClose(shouldClose, delegate: delegate, selector: shouldCloseSelector, contextInfo: contextInfo)
+			let Class: AnyClass = object_getClass(delegate)
+			let method = class_getMethodImplementation(Class, shouldCloseSelector)
+			
+			// Method signature looks like
+			// - (void)document:(NSDocument *)doc shouldClose:(BOOL)shouldClose  contextInfo:(void  *)contextInfo
+			
+			typealias signature = @convention(c) (AnyObject, Selector, AnyObject, Bool, UnsafeMutablePointer<Void>) -> Void
+			let function = unsafeBitCast(method, signature.self)
+
+			function(delegate, shouldCloseSelector, self, shouldClose, contextInfo)
 		}
 	}
 }
