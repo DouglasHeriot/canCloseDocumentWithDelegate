@@ -42,8 +42,12 @@ class Document: NSDocument {
 		// If you override either of these, you should also override -isEntireFileLoaded to return false if the contents are lazily loaded.
 		throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
 	}
-
+	
 	override func canCloseDocumentWithDelegate(delegate: AnyObject, shouldCloseSelector: Selector, contextInfo: UnsafeMutablePointer<Void>) {
+		super.canCloseDocumentWithDelegate(self, shouldCloseSelector: #selector(Document.document(_:shouldClose:contextInfo:)), contextInfo: contextInfo)
+	}
+	
+	func document(doc:NSDocument, shouldClose:Bool, contextInfo:UnsafeMutablePointer<Void>) {
 		
 		let alert = NSAlert()
 		alert.messageText = "Are you sure you want to close this document?"
@@ -54,16 +58,10 @@ class Document: NSDocument {
 			
 			let shouldClose = returnCode == NSAlertFirstButtonReturn
 			
-			let Class: AnyClass = object_getClass(delegate)
-			let method = class_getMethodImplementation(Class, shouldCloseSelector)
-			
-			// Method signature looks like
-			// - (void)document:(NSDocument *)doc shouldClose:(BOOL)shouldClose  contextInfo:(void  *)contextInfo
-			
-			typealias signature = @convention(c) (AnyObject, Selector, AnyObject, Bool, UnsafeMutablePointer<Void>) -> Void
-			let function = unsafeBitCast(method, signature.self)
-
-			function(delegate, shouldCloseSelector, self, shouldClose, contextInfo)
+			if shouldClose {
+				// <Your clean-up code>
+				doc.close()
+			}
 		}
 	}
 }
